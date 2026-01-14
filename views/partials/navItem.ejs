@@ -1,0 +1,8 @@
+<li class="<%= locals.active ? 'side-nav--active' : '' %>">
+  <a href="<%= link %>">
+    <svg>
+      <use xlink:href="img/icons.svg#icon-<%= icon %>"></use>
+    </svg>
+    <%= text %>
+  </a>
+</li>
