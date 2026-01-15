@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import ejs from "ejs";
 import { convert } from "html-to-text";
 const _dirname = import.meta.dirname;
+import sgMail from "@sendgrid/mail";
 
 export default class Email {
   constructor(user, url) {
@@ -11,15 +12,6 @@ export default class Email {
     this.from = `mohamed eldawi <${process.env.Email_from}>`;
   }
   newTransporter() {
-    if (process.env.NODE_ENV === "production") {
-      return nodemailer.createTransport({
-        service: "SendGrid",
-        auth: {
-          user: process.env.SEND_GRID_USER,
-          pass: process.env.SEND_GRID_PASSWORD,
-        },
-      });
-    }
     return nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
@@ -52,7 +44,14 @@ export default class Email {
       subject,
       text: convert(html),
     };
-    await this.newTransporter().sendMail(mailOptions);
+    if (process.env.NODE_ENV === "production") {
+      // in production
+      sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+      await sgMail.send(mailOptions);
+    } else {
+      // in development
+      await this.newTransporter().sendMail(mailOptions);
+    }
   }
   // specific mails
   async sendWelcome() {
