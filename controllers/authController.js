@@ -6,6 +6,31 @@ import Email from "../utilis/emailHandler.js";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
+// validate user input middleware
+export const validate = (schema) => {
+  return (req, res, next) => {
+    const result = schema.safeParse(req.body);
+    if (!result.success) {
+      console.log(result.error.issues[0]);
+      const errors = result.error.issues
+        .map((err) => {
+          const field = err.path[0];
+          if (
+            err.code === "invalid_type" &&
+            err.message.split(" ").at(-1) === "undefined"
+          ) {
+            return `${field} is required`;
+          }
+          return `${field} ${err.message}`;
+        })
+        .join(", ");
+      return next(new appError(`${errors}`, 400));
+    }
+    req.validatedBody = result.data;
+    next();
+  };
+};
+
 // create JWT and send it to the user
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -49,11 +74,8 @@ export const signup = catchAsync(async (req, res, next) => {
 
 // login
 export const login = catchAsync(async (req, res, next) => {
-  let { email, password } = req.body || {};
+  let { email, password } = req.validatedBody;
 
-  if (!email || !password) {
-    return next(new appError("Please provide the email and password", 400));
-  }
   let user = await User.findOne({ email }).select("+password");
   if (!user || !(await user.checkPassword(password, user.password))) {
     return next(new appError("Wrong email or password", 401));
