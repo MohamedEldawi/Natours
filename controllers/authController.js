@@ -11,20 +11,7 @@ export const validate = (schema) => {
   return (req, res, next) => {
     const result = schema.safeParse(req.body);
     if (!result.success) {
-      console.log(result.error.issues[0]);
-      const errors = result.error.issues
-        .map((err) => {
-          const field = err.path[0];
-          if (
-            err.code === "invalid_type" &&
-            err.message.split(" ").at(-1) === "undefined"
-          ) {
-            return `${field} is required`;
-          }
-          return `${field} ${err.message}`;
-        })
-        .join(", ");
-      return next(new appError(`${errors}`, 400));
+      return next(new appError(`Invalid Input Data`, 400));
     }
     req.validatedBody = result.data;
     next();
@@ -60,13 +47,7 @@ const createSendToken = (user, statusCode, res) => {
 
 // signup
 export const signup = catchAsync(async (req, res, next) => {
-  let newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-    photo: req.body.photo,
-  });
+  let newUser = await User.create(req.validatedBody);
   const url = `${req.protocol}://${req.get("host")}/me`;
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);

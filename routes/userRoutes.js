@@ -1,11 +1,15 @@
 import express from "express";
 import * as userController from "../controllers/userController.js";
 import * as authController from "../controllers/authController.js";
-import { loginSchema } from "../validators/authSchema.js";
+import { loginSchema, signupSchema } from "../validators/authSchema.js";
 
 const router = express.Router();
 // 1) not logged in routes
-router.post("/signup", authController.signup);
+router.post(
+  "/signup",
+  authController.validate(signupSchema),
+  authController.signup
+);
 router.post(
   "/login",
   authController.validate(loginSchema),
