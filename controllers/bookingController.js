@@ -31,7 +31,7 @@ export const getCheckout = catchAsync(async (req, res, next) => {
             name: `${tour.name}`,
             description: tour.summary,
             images: [
-              `https://natours-api-iy0p.onrender.com/img/tours/${tour.imageCover}`,
+              `https://natours-xqpc.onrender.com/img/tours/${tour.imageCover}`,
             ],
           },
         },
