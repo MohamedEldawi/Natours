@@ -1,4 +1,5 @@
 import { login, logout } from "./login.js";
+import { signup } from "./signup.js";
 import { displayMap } from "./mapBox.js";
 import { updateSettings } from "./updateUser.js";
 import { getSession } from "./stripe.js";
@@ -6,6 +7,7 @@ import { getSession } from "./stripe.js";
 // geting needed elements
 const mapbox = document.getElementById("map");
 const logInForm = document.querySelector(".form--login");
+const signupForm = document.querySelector(".form--signup");
 const logOutButton = document.querySelector(".nav__el--logout");
 const updateDataForm = document.querySelector(".form-user-data");
 const updatePasswordForm = document.querySelector(".form-user-settings");
@@ -27,6 +29,16 @@ if (logInForm) {
 }
 if (logOutButton) {
   logOutButton.addEventListener("click", logout);
+}
+if (signupForm) {
+  signupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+    await signup(name, email, password, confirmPassword);
+  });
 }
 if (updateDataForm) {
   updateDataForm.addEventListener("submit", async (e) => {

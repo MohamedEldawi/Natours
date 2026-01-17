@@ -28,6 +28,14 @@ export const getLogIn = catchAsync(async (req, res, next) => {
   res.status(200).render("login", { title: "Log Into Your Account" });
 });
 
+// signup page
+export const getSignup = catchAsync(async (req, res, next) => {
+  if (res.locals.user) return res.redirect("/");
+  res.status(200).render("signup", {
+    title: "Create New Account",
+  });
+});
+
 // my account page
 export const accountPage = catchAsync(async (req, res, next) => {
   res.status(200).render("account", {

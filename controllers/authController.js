@@ -11,6 +11,7 @@ export const validate = (schema) => {
   return (req, res, next) => {
     const result = schema.safeParse(req.body);
     if (!result.success) {
+      console.log(result.error);
       return next(new appError(`Invalid Input Data`, 400));
     }
     req.validatedBody = result.data;

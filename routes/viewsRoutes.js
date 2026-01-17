@@ -10,6 +10,7 @@ router
   .route("/tour/:slug")
   .get(authController.isLoggedIn, viewsConroller.getTourPage);
 router.get("/login", authController.isLoggedIn, viewsConroller.getLogIn);
+router.get("/signup", authController.isLoggedIn, viewsConroller.getSignup);
 
 // protected routes
 router.get("/me", authController.protect, viewsConroller.accountPage);
