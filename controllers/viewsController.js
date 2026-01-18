@@ -51,3 +51,12 @@ export const getMyTours = catchAsync(async (req, res, next) => {
   const tours = await Tour.find({ _id: { $in: tourIds } }); // you could done this in one step with populate but we did it like this to try $in opreator which find all the elements that is in the list
   res.status(200).render("overview", { title: "My Tours", tours });
 });
+
+// manage tours page
+export const getManageToursPage = catchAsync(async (req, res, next) => {
+  const tours = await Tour.find();
+  res.status(200).render("manageTours", {
+    title: "Manage Tours",
+    tours,
+  });
+});

@@ -198,7 +198,7 @@ body {
   font-weight: 400;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /*Add later when we use this for the button in form*/
+
   border: none;
   cursor: pointer;
 }
@@ -1249,8 +1249,6 @@ body {
   border-radius: 4px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  /* Pseudo element (a visible thing that isn't really in the DOM).
-      Also needs -ms- */
 }
 .form__input:focus {
   outline: none;
@@ -1323,28 +1321,130 @@ body {
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
 }
-/* =========================
-   MOBILE RESPONSIVE FIXES
-   ========================= */
+.add-tour-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4rem;
+}
+.btn-add-tour__icon {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.btn-add-tour__text {
+  letter-spacing: 0.05rem;
+  font-weight: 800;
+}
+
+/* ADMIN – MANAGE TOURs */
+.admin-tour-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.admin-tour-row {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.08);
+}
+
+.admin-tour-img {
+  width: 16rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 3rem;
+}
+
+.admin-tour-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  flex: 1;
+}
+
+.admin-tour-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn--danger {
+  background-color: #eb4d4b;
+  color: #fff;
+}
+
+.btn--danger:hover {
+  background-color: #ff6b6b;
+}
+.btn--danger:focus {
+  background-color: #e74c3c;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.modal__overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal__title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.modal__text {
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px) {
-  /* Prevent horizontal scrolling */
   body {
     padding: 1rem;
     overflow-x: hidden;
   }
 
-  /* Main content spacing */
   .main {
     padding: 4rem 2rem;
   }
 
-  /* Header fixes */
   .header {
     height: auto;
     padding: 2rem;
   }
 
-  /* Navigation */
   .nav {
     flex-direction: column;
   }
@@ -1354,13 +1454,11 @@ body {
     margin-bottom: 1.2rem;
   }
 
-  /* Cards: 1 column instead of 3 */
   .card-container {
     grid-template-columns: 1fr;
     grid-gap: 3rem;
   }
 
-  /* Section description stack */
   .section-description {
     flex-direction: column;
   }
@@ -1370,7 +1468,6 @@ body {
     padding: 4rem 2rem;
   }
 
-  /* Heading fixes */
   .heading-primary {
     font-size: 3.2rem;
     width: 100%;
@@ -1390,7 +1487,6 @@ body {
     padding: 2rem;
   }
 
-  /* CTA section */
   .cta {
     padding: 4rem 2rem;
   }
@@ -1399,7 +1495,6 @@ body {
     display: none;
   }
 
-  /* User view layout */
   .user-view {
     flex-direction: column;
   }
@@ -1409,12 +1504,10 @@ body {
     width: 100%;
   }
 
-  /* Forms */
   .login-signup-form {
     padding: 3rem 2rem;
   }
 
-  /* Images */
   img {
     max-width: 100%;
     height: auto;

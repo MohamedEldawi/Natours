@@ -15,4 +15,10 @@ router.get("/signup", authController.isLoggedIn, viewsConroller.getSignup);
 // protected routes
 router.get("/me", authController.protect, viewsConroller.accountPage);
 router.get("/my-bookings", authController.protect, viewsConroller.getMyTours);
+router.get(
+  "/manage-tours",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewsConroller.getManageToursPage
+);
 export { router };

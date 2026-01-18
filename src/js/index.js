@@ -3,6 +3,7 @@ import { signup } from "./signup.js";
 import { displayMap } from "./mapBox.js";
 import { updateSettings } from "./updateUser.js";
 import { getSession } from "./stripe.js";
+import { deleteItem } from "./delete.js";
 
 // geting needed elements
 const mapbox = document.getElementById("map");
@@ -12,6 +13,12 @@ const logOutButton = document.querySelector(".nav__el--logout");
 const updateDataForm = document.querySelector(".form-user-data");
 const updatePasswordForm = document.querySelector(".form-user-settings");
 const checkoutButton = document.getElementById("book-tour");
+const deleteButtons = document.querySelectorAll(
+  ".admin-tour-actions .btn--danger"
+);
+const modal = document.getElementById("confirmModal");
+const cancelBtn = document.getElementById("cancelDelete");
+const confirmBtn = document.getElementById("confirmDelete");
 
 // check if elements exist
 if (mapbox) {
@@ -75,5 +82,29 @@ if (checkoutButton) {
     const tourId = button.dataset.tourId;
     button.textContent = "Processing...";
     await getSession(tourId);
+  });
+}
+if (deleteButtons) {
+  let selectedId = null;
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      selectedId = e.currentTarget.dataset.tourId;
+      modal.classList.remove("hidden");
+    });
+  });
+
+  // cancel delete
+  cancelBtn.addEventListener("click", () => {
+    selectedId = null;
+    modal.classList.add("hidden");
+  });
+
+  // confirm delete
+  confirmBtn.addEventListener("click", async () => {
+    if (!selectedId) return;
+    await deleteItem("tours", selectedId);
+    modal.classList.add("hidden");
+    selectedId = null;
   });
 }
