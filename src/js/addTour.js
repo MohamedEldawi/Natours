@@ -13,7 +13,7 @@ export const addTour = async (data, images) => {
           showAlert("success", "Tour added successfully");
           window.setTimeout(() => {
             location.assign(`/tour/${slug}`);
-          }, 1500);
+          }, 1000);
         }
       } catch (error) {
         showAlert("error", error.response.data.message);

@@ -113,6 +113,7 @@ if (deleteButtons.length > 0) {
 
 //  add tour
 const tourForm = document.getElementById("tourForm");
+const saveButton = document.getElementById("saveNewTour");
 if (tourForm) {
   tourForm.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -170,8 +171,9 @@ if (tourForm) {
       .forEach((file) => {
         fd.append("images", file);
       });
-
+    saveButton.textContent = "Saving...";
     await addTour(payload, fd);
+    saveButton.textContent = "Save Tour";
   });
 }
 
