@@ -1,5 +1,5 @@
 import axios from "axios";
-import { showAlert } from "./alert";
+import { showAlert } from "../UI/alert.js";
 export const login = async (email, password) => {
   try {
     const response = await axios.post("/api/v1/users/login", {

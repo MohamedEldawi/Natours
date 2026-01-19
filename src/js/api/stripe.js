@@ -1,7 +1,7 @@
 import axios from "axios";
-import { showAlert } from "./alert.js";
+import { showAlert } from "../UI/alert.js";
 const stripe = Stripe(
-  `pk_test_51SnhntE5SUNREJwQjcLNKi0iVXpeTxO3X7lfNJifxHI0T86FgjPtCMkdw0Df0oygNwqxCudwvJ63C7OcZngMIgZr00emFRCS28`
+  `pk_test_51SnhntE5SUNREJwQjcLNKi0iVXpeTxO3X7lfNJifxHI0T86FgjPtCMkdw0Df0oygNwqxCudwvJ63C7OcZngMIgZr00emFRCS28`,
 );
 
 export const getSession = async (tourId) => {
