@@ -2,6 +2,7 @@ import catchAsync from "../utilis/catchAsync.js";
 import { appError } from "../utilis/appError.js";
 import { filterObj } from "../utilis/filterObj.js";
 import { apiFeatures } from "../utilis/apiFeatures.js";
+import { json } from "zod";
 
 // CRUD factory
 
@@ -12,7 +13,7 @@ export const deleteOne = (Model) =>
 
     if (!document) {
       return next(
-        new appError(`No ${Model.modelName} found with this ID`, 404)
+        new appError(`No ${Model.modelName} found with this ID`, 404),
       );
     }
     res.status(204).json({
@@ -37,7 +38,7 @@ export const updateOne = (Model, allowedFields) =>
       {
         runValidators: true,
         new: true,
-      }
+      },
     );
     if (!updatedDocument) {
       return next(new appError(`No ${modelName} found with this ID`, 404));
@@ -75,7 +76,7 @@ export const readOne = (Model, popOptions) =>
     let document = await query;
     if (!document) {
       return next(
-        new appError(`No ${Model.modelName} found with this ID`, 404)
+        new appError(`No ${Model.modelName} found with this ID`, 404),
       );
     }
     res.status(200).json({

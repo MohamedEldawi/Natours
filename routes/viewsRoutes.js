@@ -19,6 +19,12 @@ router.get(
   "/manage-tours",
   authController.protect,
   authController.restrictTo("admin"),
-  viewsConroller.getManageToursPage
+  viewsConroller.getManageToursPage,
+);
+router.get(
+  "/Add-Tour",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewsConroller.getAddTourPage,
 );
 export { router };

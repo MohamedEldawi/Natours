@@ -72,7 +72,6 @@ const tourSchema = new mongoose.Schema(
 
     imageCover: {
       type: String,
-      required: [true, "Every tour must have cover image"],
     },
 
     images: [String],
@@ -90,7 +89,16 @@ const tourSchema = new mongoose.Schema(
         default: "Point",
         enum: ["Point"],
       },
-      coordinates: [Number],
+      coordinates: {
+        type: [Number],
+        required: [true, "Every tour must have start location coordinates"],
+        validate: {
+          validator: function (val) {
+            return Array.isArray(val) && val.length === 2;
+          },
+          message: "Coordinates must be [longitude, latitude]",
+        },
+      },
       address: String,
       description: String,
     },
@@ -121,7 +129,7 @@ const tourSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-  }
+  },
 );
 tourSchema.index({ price: 1, ratingsAverage: -1 });
 tourSchema.index({ startLocation: "2dsphere" });

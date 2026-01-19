@@ -60,3 +60,11 @@ export const getManageToursPage = catchAsync(async (req, res, next) => {
     tours,
   });
 });
+
+// ADD New Tour page
+
+export const getAddTourPage = catchAsync(async (req, res, next) => {
+  res.status(200).render("addTour", {
+    title: "Add New Tour",
+  });
+});

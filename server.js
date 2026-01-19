@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 // 1) Database connection
 const connString = process.env.CONN_STRING.replace(
   "<db_password>",
-  process.env.DB_PASSWORD
+  process.env.DB_PASSWORD,
 );
 try {
   await mongoose.connect(connString);

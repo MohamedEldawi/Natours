@@ -1429,6 +1429,190 @@ body {
   display: none;
 }
 
+/* ADD TOUR FORM  */
+.tour-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  background: #fff;
+  padding: 4rem;
+  border-radius: 8px;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.08);
+}
+
+.tour-form__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-form__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  color: #28b487;
+}
+
+.tour-form__group {
+  margin-bottom: 2.5rem;
+}
+
+.tour-form__label {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.tour-form__location-label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.tour-form__input,
+.tour-form__textarea {
+  width: 100%;
+  padding: 1.2rem 1.6rem;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #f2f2f2;
+}
+
+.tour-form__textarea {
+  resize: vertical;
+}
+
+.tour-form__location-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f7f7f7;
+  padding: 1rem 1.4rem;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.tour-form__add-btn {
+  background: none;
+  border: none;
+  color: #55c57a;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
+.tour-form__images {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.tour-form__image-box {
+  width: 8rem;
+  height: 6rem;
+  background: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.tour-form__date,
+.tour-form__guide {
+  background: #f7f7f7;
+  padding: 1rem 1.4rem;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.tour-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: auto;
+}
+.tour-form__title--main {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+.tour-form__input--inline {
+  margin-bottom: 1rem;
+}
+
+.image-preview {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.image-preview img {
+  width: 12rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+.image-preview--single img {
+  width: 20rem;
+  height: 12rem;
+}
+
+.image-preview--multiple img {
+  width: 10rem;
+  height: 7rem;
+}
+.image-placeholder {
+  width: 10rem;
+  height: 7rem;
+  background: #eaeaea;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #999;
+  font-weight: 600;
+}
+
+.add-tour-ui {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3.5rem;
+}
+
+.add-tour-ui__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.6rem 3.8rem;
+  font-size: 1.6rem;
+}
+
+.add-tour-ui__icon {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.add-tour-ui__text {
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+}
+
+@media (max-width: 900px) {
+  .tour-form {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px) {
   body {

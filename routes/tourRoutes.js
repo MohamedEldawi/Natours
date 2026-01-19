@@ -18,7 +18,7 @@ router
   .get(
     authController.protect,
     authController.restrictTo("admin", "lead-guide", "guide"),
-    tourController.getMonthlyStats
+    tourController.getMonthlyStats,
   );
 router
   .route("/")
@@ -26,7 +26,7 @@ router
   .post(
     authController.protect,
     authController.restrictTo("admin", "lead-guide"),
-    tourController.addTour
+    tourController.addTour,
   );
 
 router
@@ -41,11 +41,11 @@ router
     authController.restrictTo("admin", "lead-guide"),
     tourController.uploadTourImages,
     tourController.resizeTourImages,
-    tourController.updateTour
+    tourController.updateTour,
   )
   .delete(
     authController.protect,
     authController.restrictTo("admin", "lead-guide"),
-    tourController.deleteTour
+    tourController.deleteTour,
   );
 export { router };

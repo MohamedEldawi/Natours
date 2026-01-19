@@ -1,0 +1,168 @@
+<main class="main">
+  <div class="container">
+
+    <h2 class="tour-form__title tour-form__title--main">Tour Details</h2>
+
+    
+    <form class="tour-form" id="tourForm">
+
+      
+      <div class="tour-form__column">
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Tour Name</label>
+          <input class="tour-form__input" name="name" required />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Price</label>
+          <input class="tour-form__input" type="number" name="price" min="0" required />
+        </div>
+
+        
+        <div class="tour-form__group">
+          <label class="tour-form__label">Start Location (Description)</label>
+          <input class="tour-form__input" name="startLocationDescription" required />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Start Location Address</label>
+          <input class="tour-form__input" name="startLocationAddress" required />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Start Location Coordinates</label>
+          <input class="tour-form__input tour-form__input--inline" name="startLng" placeholder="Longitude" />
+          <input class="tour-form__input tour-form__input--inline" name="startLat" placeholder="Latitude" />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Duration (days)</label>
+          <input class="tour-form__input" type="number" name="duration" min="1" required />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Max Group Size</label>
+          <input class="tour-form__input" type="number" name="maxGroupSize" min="1" required />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Difficulty</label>
+          <select class="tour-form__input" name="difficulty" required>
+            <option value="">Select</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="difficult">Difficult</option>
+          </select>
+        </div>
+       
+        <div class="tour-form__group">
+          <label class="tour-form__label">Locations</label>
+
+          <div id="locationsContainer">
+            <label class="tour-form__location-label">Location 1</label>
+            <input class="tour-form__input tour-form__input--inline" name="locationDesc[]" placeholder="Description" />
+            <input class="tour-form__input tour-form__input--inline" name="locationLng[]" placeholder="Lng" />
+            <input class="tour-form__input tour-form__input--inline" name="locationLat[]" placeholder="Lat" />
+            <input class="tour-form__input tour-form__input--inline" name="locationDay[]" placeholder="Day" />
+          </div>
+
+          <button type="button" class="btn btn--small" id="addLocationBtn">
+            + Add Location
+          </button>
+        </div>
+
+      </div>
+
+      
+      <div class="tour-form__column">
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Summary</label>
+          <input class="tour-form__input" name="summary" required />
+        </div>
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Description</label>
+          <textarea class="tour-form__textarea" name="description" rows="6"></textarea>
+        </div>
+
+        <div class="tour-form__group">
+
+          <input class="form__upload" type="file" name="imageCover" accept="image/*" id="imageCover" required />
+          <label class="tour-form__label" for="imageCover">Upload Cover Image</label>
+
+
+          <div class="image-preview image-preview--single" id="imageCoverPreview">
+            <div class="image-placeholder">
+              Cover Image
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="tour-form__group">
+
+
+          <input class="form__upload" type="file" name="images" id="images" accept="image/*" multiple required />
+          <label class="tour-form__label" for="images">Upload Three Images</label>
+
+
+          <div class="image-preview image-preview--multiple" id="imagesPreview">
+            <div class="image-placeholder">
+              Image 1
+            </div>
+            <div class="image-placeholder">
+              Image 2
+            </div>
+            <div class="image-placeholder">
+              Image 3
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Start Dates</label>
+
+          <div id="startDatesContainer">
+            <input class="tour-form__input tour-form__input--inline" type="date" name="startDates[]" />
+            <input class="tour-form__input tour-form__input--inline" type="date" name="startDates[]" />
+            <input class="tour-form__input tour-form__input--inline" type="date" name="startDates[]" />
+          </div>
+
+          <button type="button" class="btn btn--small" id="addStartDateBtn">
+            + Add Start Date
+          </button>
+        </div>
+
+
+        <div class="tour-form__group">
+          <label class="tour-form__label">Guides IDs</label>
+
+          <div id="guidesContainer">
+            <input class="tour-form__input tour-form__input--inline" name="guides[]" />
+            <input class="tour-form__input tour-form__input--inline" name="guides[]" />
+          </div>
+
+          <button type="button" class="btn btn--small" id="addGuideBtn">
+            + Add Guide
+          </button>
+        </div>
+
+
+
+
+
+        <div class="tour-form__actions">
+          <button class="btn btn--green" type="submit">Save Tour</button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+</main>
