@@ -9,7 +9,7 @@ export default class Email {
     this.to = user.email;
     this.firstName = user.name.split(" ")[0];
     this.url = url;
-    this.from = `mohamed eldawi <${process.env.Email_from}>`;
+    this.from = `mohamed eldawi <${process.env.EMAIL_FROM}>`;
   }
   newTransporter() {
     return nodemailer.createTransport({
@@ -28,14 +28,14 @@ export default class Email {
       {
         firstName: this.firstName,
         url: this.url,
-      }
+      },
     );
     const html = await ejs.renderFile(
       `${_dirname}/../views/email/baseEmail.ejs`,
       {
         body: content,
         subject,
-      }
+      },
     );
     const mailOptions = {
       from: this.from,
@@ -60,7 +60,7 @@ export default class Email {
   async sendPasswordReset() {
     await this.send(
       "passwordReset",
-      "Your password reset token (Valid for 10 minutes)"
+      "Your password reset token (Valid for 10 minutes)",
     );
   }
 }
